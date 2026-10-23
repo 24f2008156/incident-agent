@@ -193,6 +193,7 @@ async function makePlan(body, secrets) {
       return { plan, modelStart: started, modelEnd: Date.now() };
     } catch (e) { lastErr = e; }
   }
+  console.error('Planner failed:', lastErr ? lastErr.message : 'unknown error');
   throw new HttpError(502, 'planner_unavailable');
 }
 
